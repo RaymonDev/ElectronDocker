@@ -1,5 +1,6 @@
 # ElectronDocker
-This guide explains how to run an Electron application inside a Docker container using Ubuntu and have the UI rendered on the host machine.
+This guide explains how to run an Electron application inside a Docker container using Ubuntu and have the UI rendered on the host machine. The UI utilizes Three.js for rendering 3D graphics.
+
 
 ## Prerequisites
 
