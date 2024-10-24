@@ -1,10 +1,10 @@
 FROM ubuntu:20.04
 
-# Configurar las variables de entorno para evitar la configuración interactiva de tzdata
+# Set environment variables to avoid interactive configuration of tzdata
 ENV DEBIAN_FRONTEND=noninteractive \
-    TZ=Europe/Madrid
+    TZ=America/Los_Angeles
 
-# Instalar Node.js, NPM, y dependencias adicionales necesarias para Electron
+# Install Node.js, NPM, and additional dependencies needed for Electron
 RUN apt-get update && apt-get install -y \
     tzdata \
     curl \
@@ -23,19 +23,18 @@ RUN apt-get update && apt-get install -y \
     git \
     && apt-get clean
 
-# Instalar Node.js 18.x (compatible con Electron 32.x)
+# Install Node.js 18.x (compatible with Electron 32.x)
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
     apt-get install -y nodejs
 
-# Establecer el directorio de trabajo en /app dentro del contenedor
+# Set the working directory to /app inside the container
 WORKDIR /app
 
-# Copiar todos los archivos desde el host a la carpeta /app en el contenedor
+# Copy all files from the host to the /app folder in the container
 COPY appw /app
 
-# Instalar las dependencias de la aplicación
+# Install application dependencies
 RUN npm install
 
-# Comando para ejecutar la aplicación Electron usando npm start
+# Command to run the Electron application using npm start
 CMD ["npm", "start"]
-
