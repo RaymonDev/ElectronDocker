@@ -17,11 +17,13 @@ First, ensure you have the following `Dockerfile` in your project directory:
 ```Dockerfile
 FROM ubuntu:20.04
 
-# Configure timezone and environment variables
-ENV DEBIAN_FRONTEND=noninteractive \
-    TZ=Europe/Madrid
+# Configure timezone and environmenFROM ubuntu:20.04
 
-# Install Node.js, npm, and necessary dependencies for Electron
+# Set environment variables to avoid interactive configuration of tzdata
+ENV DEBIAN_FRONTEND=noninteractive \
+    TZ=America/Los_Angeles
+
+# Install Node.js, NPM, and additional dependencies needed for Electron
 RUN apt-get update && apt-get install -y \
     tzdata \
     curl \
@@ -47,13 +49,13 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
 # Set the working directory to /app inside the container
 WORKDIR /app
 
-# Copy all project files to the /app directory inside the container
+# Copy all files from the host to the /app folder in the container
 COPY appw /app
 
-# Install the app dependencies
+# Install application dependencies
 RUN npm install
 
-# Command to run the Electron app using npm start
+# Command to run the Electron application using npm start
 CMD ["npm", "start"]
 ```
 
