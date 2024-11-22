@@ -65,9 +65,9 @@ Build the Docker image with the following command:
 
 docker build -t electron-app .
 ```
-### 2. Allow X11 Forwarding
+### 2. Allow Display Forwarding
 
-To allow the Docker container to connect to your X11 display, run:
+To allow the Docker container to connect to your display, run:
 
 ```bash
 
